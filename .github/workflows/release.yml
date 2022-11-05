@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v3
       with:
-        node-version: 12.x
+        node-version: 16.x
 
     - uses: actions/checkout@v2
     
@@ -31,7 +31,7 @@ jobs:
         fi
         echo '::set-output name=commit_message::[auto]'
 
-    - uses: satackey/push-prebuilt-action@v0.2.0-beta3
+    - uses: jpribyl/push-prebuilt-action@v0.2.1
       with:
         commit-message: ${{ steps.info.outputs.commit_message }}
         push-branch: '{branch}-release'
@@ -69,7 +69,7 @@ jobs:
               }, {
                 inspect_image: 'nothing',
                 os: 'ubuntu-latest',
-                prepare_command: 'docker tag node:12 nothing',
+                prepare_command: 'docker tag node:16 nothing',
                 build_command: ':',
               }, {
                 inspect_image: 'nothing',
