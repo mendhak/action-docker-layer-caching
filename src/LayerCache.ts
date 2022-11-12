@@ -4,7 +4,7 @@ import crypto from "crypto";
 import * as core from "@actions/core";
 import * as cache from "@actions/cache";
 import { ExecOptions } from "@actions/exec/lib/interfaces";
-import { promises as fs } from "fs";
+import { existsSync, promises as fs } from "fs";
 import recursiveReaddir from "recursive-readdir";
 import { Manifest, loadManifests, loadRawManifests } from "./Tar";
 import format from "string-format";
@@ -277,7 +277,9 @@ class LayerCache {
   }
 
   async cleanUp() {
-    await fs.rmdir(this.getImagesDir(), { recursive: true });
+    if (existsSync(this.getImagesDir())) {
+      await fs.rm(this.getImagesDir(), { recursive: true });
+    }
   }
 
   // ---
