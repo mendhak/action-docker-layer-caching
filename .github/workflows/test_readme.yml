@@ -44,13 +44,13 @@ jobs:
               }, {
                 inspect_image: 'nothing',
                 os: 'ubuntu-latest',
-                prepare_command: 'docker tag node:12 nothing',
-                build_command: ':',
+                prepare_command: 'docker pull node:12',
+                build_command: 'docker tag node:12 nothing',
               }, {
                 inspect_image: 'nothing',
                 os: 'windows-latest',
-                prepare_command: 'docker tag mcr.microsoft.com/windows/nanoserver:1809 nothing',
-                build_command: ':',
+                prepare_command: 'docker pull mcr.microsoft.com/windows/nanoserver:1809',
+                build_command: 'docker tag mcr.microsoft.com/windows/nanoserver:1809 nothing',
               }, {
                 branch: process.env.GITHUB_REF.replace('refs/heads/', '')
               }
