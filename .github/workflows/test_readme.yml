@@ -19,7 +19,7 @@ jobs:
     steps:
     - name: Output matrix
       id: set_matrix
-      uses: actions/github-script@v2
+      uses: actions/github-script@v6
       with:
         script: |
           return {
@@ -74,7 +74,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - run: ${{ matrix.prepare_command }}
 
@@ -92,7 +92,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - run: ${{ matrix.prepare_command }}
 
