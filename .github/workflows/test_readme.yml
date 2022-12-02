@@ -78,7 +78,7 @@ jobs:
 
     - run: ${{ matrix.prepare_command }}
 
-    - uses: jpribyl/action-docker-layer-caching@main
+    - uses: jpribyl/action-docker-layer-caching@main-release
       with:
         key: docker-layer-caching-${{ github.workflow }}-${{ matrix.os }}-${{ matrix.inspect_image }}-sha:${{ github.sha }}-{hash}
         restore-keys: ''
@@ -96,7 +96,7 @@ jobs:
 
     - run: ${{ matrix.prepare_command }}
 
-    - uses: jpribyl/action-docker-layer-caching@main
+    - uses: jpribyl/action-docker-layer-caching@main-release
       with:
         key: never-restored-docker-layer-caching-${{ github.workflow }}-${{ matrix.os }}-${{ matrix.inspect_image }}-sha:${{ github.sha }}-{hash}
         restore-keys: docker-layer-caching-${{ github.workflow }}-${{ matrix.os }}-${{ matrix.inspect_image }}-sha:${{ github.sha }}-
