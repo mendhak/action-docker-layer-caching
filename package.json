@@ -24,6 +24,5 @@
     "ts-node": "10.9.1",
     "ttypescript": "^1.5.13",
     "typescript": "4.9.3"
-  },
-  "type": "module"
+  }
 }
