@@ -4,6 +4,7 @@ on:
   push: 
     branches:
     - master
+  workflow_dispatch:
   schedule:
   - cron: 0 0 */3 * *
 
@@ -77,7 +78,7 @@ jobs:
 
     - run: ${{ matrix.prepare_command }}
 
-    - uses: jpribyl/action-docker-layer-caching@master-release
+    - uses: jpribyl/action-docker-layer-caching@main
       with:
         key: docker-layer-caching-${{ github.workflow }}-${{ matrix.os }}-${{ matrix.inspect_image }}-sha:${{ github.sha }}-{hash}
         restore-keys: ''
@@ -95,7 +96,7 @@ jobs:
 
     - run: ${{ matrix.prepare_command }}
 
-    - uses: jpribyl/action-docker-layer-caching@master-release
+    - uses: jpribyl/action-docker-layer-caching@main
       with:
         key: never-restored-docker-layer-caching-${{ github.workflow }}-${{ matrix.os }}-${{ matrix.inspect_image }}-sha:${{ github.sha }}-{hash}
         restore-keys: docker-layer-caching-${{ github.workflow }}-${{ matrix.os }}-${{ matrix.inspect_image }}-sha:${{ github.sha }}-
